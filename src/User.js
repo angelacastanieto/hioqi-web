@@ -7,7 +7,10 @@ class User extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      user: {}
+      activitiesResult: {
+        activities: [],
+        goals: {}
+      }
     };
   }
 
@@ -18,12 +21,9 @@ class User extends Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result.items
+            activitiesResult: result
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -37,6 +37,7 @@ class User extends Component {
     return (
       <div className="App">
         <PageHeader>User Summary</PageHeader>
+        <p>You need to burn {this.state.activitiesResult.goals.caloriesOut} calories today!</p>
       </div>
     );
   }
