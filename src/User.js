@@ -7,9 +7,12 @@ class User extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      activitiesResult: {
-        activities: [],
-        goals: {}
+      getUserResult: {
+        steps_left_to_go: 0,
+        calories_out: 0,
+        calories_goal: 0,
+        steps_goal: 0,
+        steps_so_far: 0
       }
     };
   }
@@ -19,9 +22,10 @@ class User extends Component {
       .then(res => res.json())
       .then(
         (result) => {
+          console.log(result)
           this.setState({
             isLoaded: true,
-            activitiesResult: result
+            getUserResult: result
           });
         },
         (error) => {
@@ -37,7 +41,9 @@ class User extends Component {
     return (
       <div className="App">
         <PageHeader>User Summary</PageHeader>
-        <p>You need to burn {this.state.activitiesResult.goals.caloriesOut} calories today!</p>
+        <p>You have burned {this.state.getUserResult.calories_out} out of {this.state.getUserResult.calories_goal} calories today.</p>
+        <p>You need to take {this.state.getUserResult.steps_left_to_go} more steps to reach your goal!</p>
+        <p>You can do eeeeet!</p>
       </div>
     );
   }
