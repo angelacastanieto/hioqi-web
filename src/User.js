@@ -8,6 +8,8 @@ class User extends Component {
       error: null,
       isLoaded: false,
       getUserResult: {
+        name: "",
+        avatar: "",
         steps_left_to_go: 0,
         calories_out: 0,
         calories_goal: 0,
@@ -40,7 +42,8 @@ class User extends Component {
   render() {
     return (
       <div className="App">
-        <PageHeader>User Summary</PageHeader>
+        <PageHeader>Hello {this.state.getUserResult.name}, you crazy bitch!!!</PageHeader>
+        <img src={this.state.getUserResult.avatar}/>
         <p>You have burned {this.state.getUserResult.calories_out} out of {this.state.getUserResult.calories_goal} calories today.</p>
         <p>You need to take {this.state.getUserResult.steps_left_to_go} more steps to reach your goal!</p>
         <p>You can do eeeeet!</p>
