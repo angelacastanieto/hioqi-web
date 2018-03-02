@@ -11,6 +11,9 @@ class User extends Component {
         name: "",
         avatar: "",
         steps_left_to_go: 0,
+        calories_left_to_go: 0,
+        calorie_deficit_goal: 0,
+        calories_in: 0,
         calories_out: 0,
         calories_goal: 0,
         steps_goal: 0,
@@ -24,7 +27,6 @@ class User extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result)
           this.setState({
             isLoaded: true,
             getUserResult: result
@@ -40,15 +42,23 @@ class User extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <PageHeader>Hello {this.state.getUserResult.name}, you crazy bitch!!!</PageHeader>
-        <img src={this.state.getUserResult.avatar}/>
-        <p>You have burned {this.state.getUserResult.calories_out} out of {this.state.getUserResult.calories_goal} calories today.</p>
-        <p>You need to take {this.state.getUserResult.steps_left_to_go} more steps to reach your goal!</p>
-        <p>You can do eeeeet!</p>
-      </div>
-    );
+    if (!this.state.isLoaded) {
+      return (
+        <div className="App">
+          Loading
+        </div>
+      )
+    } else {
+      return (
+        <div className="App">
+          <PageHeader>Hello {this.state.getUserResult.name}, you crazy bitch!!!</PageHeader>
+          <img src={this.state.getUserResult.avatar}/>
+          <p>You have burned {this.state.getUserResult.calories_out} calories and eaten {this.state.getUserResult.calories_in} calories so far today.</p>
+          <p>You need to burn {this.state.getUserResult.calories_left_to_go} calories to reach your deficit of {this.state.getUserResult.calorie_deficit_goal} calories.</p>
+          <p>That&#39;s {this.state.getUserResult.steps_left_to_go} more steps!</p>
+        </div>
+      );
+    }
   }
 }
 
