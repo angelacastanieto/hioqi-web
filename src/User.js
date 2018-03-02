@@ -54,7 +54,7 @@ class User extends Component {
           <PageHeader>Hello {this.state.getUserResult.name}, you crazy bitch!!!</PageHeader>
           <img src={this.state.getUserResult.avatar}/>
           <p>You have burned {this.state.getUserResult.calories_out} calories and eaten {this.state.getUserResult.calories_in} calories so far today.</p>
-          <p>You need to burn {this.state.getUserResult.calories_left_to_go} calories to reach your deficit of {this.state.getUserResult.calorie_deficit_goal} calories.</p>
+          <p>You need to burn {this.state.getUserResult.calories_left_to_go} more calories to reach your deficit of {this.state.getUserResult.calorie_deficit_goal} calories.</p>
           <p>That&#39;s {this.state.getUserResult.steps_left_to_go} more steps!</p>
         </div>
       );
