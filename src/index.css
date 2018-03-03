@@ -4,12 +4,36 @@ body {
   font-family: sans-serif;
 }
 
-.navbar-header, .navbar, .jumbotron {
+.navbar-header, .navbar {
+  background-color: #ffffff;
+  color: #3ACCCC;
+}
+
+.jumbotron {
   background-color: #3ACCCC;
   color: #ffffff;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#landing-image {
+  opacity: 0.5;
 }
 
 #user-jumbo {
   background-color: #ffffff;
+  color: #3ACCCC;
+}
+
+#login-button {
+  color: #3ACCCC;
+  margin-top: 10%;
+  background-color: #d0eff2;
+}
+
+
+#faq-link {
   color: #3ACCCC;
 }

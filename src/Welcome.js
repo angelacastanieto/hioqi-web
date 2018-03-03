@@ -7,17 +7,21 @@ class Welcome extends Component {
       <div>
         <Grid style={{width:"100%", textAlign:"center", display: "flex", justifyContent: "center", alignItems: "center" }}>
           <Row>
-            <Col xs={12} md={6} style={{marginTop:"2%"}}>
-              <Image width="75%" src="hioqi_logo.jpg" square />
+            <Col xs={12} md={6} style={{marginTop:"5%"}}>
+              <Image id="landing-image" height="75%" src="hnot.png" square />
             </Col>
-            <Col xs={12} md={6} style={{marginTop:"15%"}}>
-              <Jumbotron style={{height:"80%", width:"80%", margin: "0 auto", textAlign:"center"}}>
-                <h1>Welcome to HIOQI</h1>
+            <Col xs={0} md={2}/>
+            <Col xs={12} md={4} style={{marginTop:"18%"}}>
+              <Jumbotron id="welcome-jubmo">
+                <h1>HIIT it or quit it</h1>
                 <p>
-                  Visualize your fitness and weight loss goals.
+                  Visualize your fitness and weight loss goals
                 </p>
                 <p>
-                  <Button href="http://localhost:8000/auth/fitbit" style={{backgroundColor:"#d0eff2"}}>Login with Fitbit</Button>
+                  <Button id="login-button" bsSize="large" href="http://localhost:8000/auth/fitbit">Login with Fitbit</Button>
+                </p>
+                <p>
+                  <Button id="faq-link" bsSize="large" bsStyle="link" href="#">FAQ</Button>
                 </p>
               </Jumbotron>
             </Col>
