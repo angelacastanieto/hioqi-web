@@ -23,8 +23,17 @@ class User extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8000/users/"+this.props.match.params.user_id)
-      .then(res => res.json())
+    fetch("http://localhost:8000/users/"+this.props.match.params.user_id, {
+           method: 'get'
+         })
+      .then(
+        (res) => {
+          if (res.status === 401) {
+            return this.props.history.push('/')
+          }
+          return res.json()
+        }
+      )
       .then(
         (result) => {
           this.setState({
@@ -37,6 +46,7 @@ class User extends Component {
             isLoaded: true,
             error
           });
+          this.props.history.push('/')
         }
       )
   }
@@ -52,7 +62,7 @@ class User extends Component {
       return (
         <div className="App">
           <PageHeader>Hello {this.state.getUserResult.name}, you crazy bitch!!!</PageHeader>
-          <img src={this.state.getUserResult.avatar}/>
+          <img alt={"profile picture"} src={this.state.getUserResult.avatar}/>
           <p>You have burned {this.state.getUserResult.calories_out} calories and eaten {this.state.getUserResult.calories_in} calories so far today.</p>
           <p>You need to burn {this.state.getUserResult.calories_left_to_go} more calories to reach your deficit of {this.state.getUserResult.calorie_deficit_goal} calories.</p>
           <p>That&#39;s {this.state.getUserResult.steps_left_to_go} more steps!</p>
