@@ -8,14 +8,13 @@ class Welcome extends Component {
         <Grid style={{width:"100%", textAlign:"center", display: "flex", justifyContent: "center", alignItems: "center" }}>
           <Row>
             <Col xs={12} md={6} style={{marginTop:"5%"}}>
-              <Image id="landing-image" height="75%" src="hnot.png" square />
+              <Image id="landing-image" width="60%" src="hnos.png" square />
             </Col>
-            <Col xs={0} md={2}/>
-            <Col xs={12} md={4} style={{marginTop:"18%"}}>
+            <Col xs={12} md={6} style={{marginTop:"13%"}}>
               <Jumbotron id="welcome-jubmo">
                 <h1>HIIT it or quit it</h1>
                 <p>
-                  Visualize your fitness and weight loss goals
+                  Achieve your fitness and weight loss goals
                 </p>
                 <p>
                   <Button id="login-button" bsSize="large" href="http://localhost:8000/auth/fitbit">Login with Fitbit</Button>
