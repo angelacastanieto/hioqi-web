@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PageHeader } from 'react-bootstrap';
+import { PageHeader, Button } from 'react-bootstrap';
 
 class User extends Component {
   constructor(props) {
@@ -23,7 +23,11 @@ class User extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8000/users/"+this.props.match.params.user_id, {
+    this.getUser(false)
+  }
+
+  getUser(resync) {
+    fetch("http://localhost:8000/users/"+this.props.match.params.user_id+"?resync="+resync, {
            method: 'get'
          })
       .then(
@@ -66,6 +70,7 @@ class User extends Component {
           <p>You have burned {this.state.getUserResult.calories_out} calories and eaten {this.state.getUserResult.calories_in} calories so far today.</p>
           <p>You need to burn {this.state.getUserResult.calories_left_to_go} more calories to reach your deficit of {this.state.getUserResult.calorie_deficit_goal} calories.</p>
           <p>That&#39;s {this.state.getUserResult.steps_left_to_go} more steps!</p>
+          <Button onClick={() => this.getUser(true)}>Resync with Fitbit</Button>
         </div>
       );
     }
