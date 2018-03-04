@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PageHeader, Button, Nav, NavItem, Navbar, Image, Grid, Row, Col, Jumbotron, View } from 'react-bootstrap';
+import { PageHeader, Button, Nav, NavItem, Navbar, Image, Grid, Row, Col, Jumbotron, NavDropdown, MenuItem } from 'react-bootstrap';
 import CircularProgressbar from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
 
@@ -104,25 +104,24 @@ class User extends Component {
       }
       return (
         <div className="App">
-          <Navbar className="center" collapseOnSelect>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <Image id="navbar-image" width="15%" src="/hnot.png" square />
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
-            <Navbar.Collapse>
-              <Nav pullRight>
-                <NavItem eventKey={1} href="#">
-                <Button bsStyle="link" onClick={() => this.getUser(true)}>Resync with Fitbit</Button>
-                </NavItem>
-                <NavItem eventKey={2}>
-                  {this.renderProfilePicture()}
-                  <Button bsStyle="link" onClick={this.logOut}>Logout</Button>
-                </NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
+          <Nav pullRight>
+          <div style={{float:"left", clear:"none"}}>
+           <div>
+             {this.renderProfilePicture()}
+            </div>
+            <div>
+             <NavDropdown style={{textAlign:"center", color: "#3ACCCC"}} eventKey="1" id="nav-dropdown">
+               <MenuItem eventKey="1.1"><Button bsSize="small" bsStyle="link" onClick={this.logOut}>Logout</Button></MenuItem>
+               <MenuItem eventKey="1.2"><Button bsSize="small" style={{align:"right"}} bsStyle="link" onClick={() => this.getUser(true)}>Resync</Button></MenuItem>
+             </NavDropdown>
+           </div>
+          </div>
+          </Nav>
+          <PageHeader>
+            <Image style={{marginLeft:"10%"}} id="navbar-image" width="10%" src="/hnot.png" square/>
+          </PageHeader>
+          <Nav justified>
+          </Nav>
           <Grid>
             <Row>
               <Col xs={12} md={8} style={{marginTop:"0%"}}>
