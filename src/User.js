@@ -31,7 +31,7 @@ class User extends Component {
   renderProfilePicture() {
     if (this.state.getUserResult.avatar) {
       return (
-          <Image width="15%" src={this.state.getUserResult.avatar} circle />
+          <Image width="25%" src={this.state.getUserResult.avatar} circle />
       );
     }
   }
@@ -125,7 +125,7 @@ class User extends Component {
           <Grid>
             <Row>
               <Col xs={12} md={8} style={{marginTop:"0%"}}>
-              <div id="user-jumbo" style={{ width:"75%", margin: "0 auto", textAlign:"center"}}>
+              <div id="user-jumbo" style={{ width:"65%", margin: "0 auto", textAlign:"center"}}>
                 <h1 style={ { color: "#3ACCCC", marginBottom: "5%" } } >Burn Goal</h1>
                 <CircularProgressbar
                   initialAnimation={true}
