@@ -42,7 +42,8 @@ class User extends Component {
 
   getUser(resync) {
     fetch("http://localhost:8000/users/"+this.props.match.params.user_id+"?resync="+resync, {
-           method: 'get'
+           method: 'get',
+           credentials: "include"
          })
       .then(
         (res) => {
