@@ -104,7 +104,7 @@ class User extends Component {
       }
       return (
         <div className="App">
-          <Navbar collapseOnSelect>
+          <Navbar className="center" collapseOnSelect>
             <Navbar.Header>
               <Navbar.Brand>
                 <Image id="navbar-image" width="15%" src="/hnot.png" square />
