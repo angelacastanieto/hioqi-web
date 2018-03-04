@@ -4,9 +4,20 @@ body {
   font-family: sans-serif;
 }
 
-.navbar-header, .navbar {
-  background-color: #ffffff;
+.navbar-header, .navbar, .navbar-brand, .navbar-nav li a {
+  background-color: #3ACCCC;
+  color: #ffffff;
+  line-height: 100%;
+  height: 25%;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  fill: #3ACCCC !important
+}
+
+.blah {
   color: #3ACCCC;
+  fill: #3ACCCC;
 }
 
 .jumbotron {
@@ -19,7 +30,7 @@ body {
 }
 
 #landing-image {
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 #user-jumbo {
