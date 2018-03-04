@@ -31,7 +31,7 @@ class User extends Component {
   renderProfilePicture() {
     if (this.state.getUserResult.avatar) {
       return (
-          <Image width="15%" src={this.state.getUserResult.avatar} circle />
+          <Image width="25%" src={this.state.getUserResult.avatar} circle />
       );
     }
   }
@@ -118,14 +118,14 @@ class User extends Component {
           </div>
           </Nav>
           <PageHeader>
-            <Image style={{marginLeft:"10%"}} id="navbar-image" width="10%" src="/hnot.png" square/>
+            <Image style={{marginLeft:"10%"}} id="navbar-image" width="25%" src="/hioqi-black-text.png" square/>
           </PageHeader>
           <Nav justified>
           </Nav>
           <Grid>
             <Row>
               <Col xs={12} md={8} style={{marginTop:"0%"}}>
-              <div id="user-jumbo" style={{ width:"75%", margin: "0 auto", textAlign:"center"}}>
+              <div id="user-jumbo" style={{ width:"60%", margin: "0 auto", textAlign:"center"}}>
                 <h1 style={ { color: "#3ACCCC", marginBottom: "5%" } } >Burn Goal</h1>
                 <CircularProgressbar
                   initialAnimation={true}
