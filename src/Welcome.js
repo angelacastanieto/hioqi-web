@@ -4,6 +4,7 @@ import config from './config/config'
 
 class Welcome extends Component {
   render() {
+    console.log("configs are", configs)
     return (
       <div>
         <Grid style={{width:"100%", textAlign:"center", display: "flex", justifyContent: "center", alignItems: "center" }}>
