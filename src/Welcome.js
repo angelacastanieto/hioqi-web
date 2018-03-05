@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PageHeader, Jumbotron, Button, Grid, Row, Col, Navbar, Image } from 'react-bootstrap';
+import config from './config/config'
 
 class Welcome extends Component {
   render() {
@@ -7,17 +8,20 @@ class Welcome extends Component {
       <div>
         <Grid style={{width:"100%", textAlign:"center", display: "flex", justifyContent: "center", alignItems: "center" }}>
           <Row>
-            <Col xs={12} md={6} style={{marginTop:"2%"}}>
-              <Image width="75%" src="hioqi_logo.jpg" square />
+            <Col xs={12} md={6} style={{marginTop:"5%"}}>
+              <Image id="landing-image" width="60%" src="hnos.png" square />
             </Col>
-            <Col xs={12} md={6} style={{marginTop:"15%"}}>
-              <Jumbotron style={{height:"80%", width:"80%", margin: "0 auto", textAlign:"center"}}>
-                <h1>Welcome to HIOQI</h1>
+            <Col xs={12} md={6} style={{marginTop:"13%"}}>
+              <Jumbotron id="welcome-jubmo">
+                <h1>HIIT it or quit it</h1>
                 <p>
-                  Visualize your fitness and weight loss goals.
+                  Achieve your fitness and weight loss goals
                 </p>
                 <p>
-                  <Button href="http://localhost:8000/auth/fitbit" style={{backgroundColor:"#d0eff2"}}>Login with Fitbit</Button>
+                  <Button id="login-button" bsSize="large" href={config.hioqiAPI+"/auth/fitbit"}>Login with Fitbit</Button>
+                </p>
+                <p>
+                  <Button id="faq-link" bsSize="large" bsStyle="link" href="#">FAQ</Button>
                 </p>
               </Jumbotron>
             </Col>

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { PageHeader, Button, Nav, NavItem, Navbar, Image, Grid, Row, Col, Jumbotron } from 'react-bootstrap';
+import { PageHeader, Button, Nav, NavItem, Navbar, Image, Grid, Row, Col, Jumbotron, NavDropdown, MenuItem } from 'react-bootstrap';
+import CircularProgressbar from 'react-circular-progressbar';
+import "react-circular-progressbar/dist/styles.css";
+import config from './config/config'
 
 class User extends Component {
   constructor(props) {
@@ -29,7 +32,7 @@ class User extends Component {
   renderProfilePicture() {
     if (this.state.getUserResult.avatar) {
       return (
-          <Image width="15%" src={this.state.getUserResult.avatar} circle />
+          <Image width="25%" src={this.state.getUserResult.avatar} circle />
       );
     }
   }
@@ -39,8 +42,9 @@ class User extends Component {
   }
 
   getUser(resync) {
-    fetch("http://localhost:8000/users/"+this.props.match.params.user_id+"?resync="+resync, {
-           method: 'get'
+    fetch(config.hioqiAPI+"/users/"+this.props.match.params.user_id+"?resync="+resync, {
+           method: 'get',
+           credentials: "include"
          })
       .then(
         (res) => {
@@ -75,40 +79,77 @@ class User extends Component {
         </div>
       )
     } else {
+      var imageStyle = {
+        container: {
+          flex: 1,
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          backgroundColor: '#000000',
+          width: 320
+        },
+        backdrop: {
+          paddingTop: 60,
+          width: 320,
+          height: 120
+        },
+        backdropView: {
+          height: 120,
+          width: 320,
+          backgroundColor: 'rgba(0,0,0,0)',
+        },
+        headline: {
+          fontSize: 20,
+          textAlign: 'center',
+          backgroundColor: 'rgba(0,0,0,0)',
+          color: 'white'
+        }
+      }
       return (
         <div className="App">
-          <Navbar style={{backgroundColor:"cccccc"}} collapseOnSelect>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <a href="/">HIOQI</a>
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
-            <Navbar.Collapse>
-              <Nav pullRight>
-                <NavItem eventKey={1} href="#">
-                <Button bsStyle="link" onClick={() => this.getUser(true)}>Resync with Fitbit</Button>
-                </NavItem>
-                <NavItem eventKey={2}>
-                  {this.renderProfilePicture()}
-                  <Button bsStyle="link" onClick={this.logOut}>Logout</Button>
-                </NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-          <Grid style={{width:"100%", textAlign:"center", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <Nav pullRight>
+          <div style={{float:"left", clear:"none"}}>
+           <div>
+             {this.renderProfilePicture()}
+            </div>
+            <div>
+             <NavDropdown style={{textAlign:"center", color: "#3ACCCC"}} eventKey="1" id="nav-dropdown">
+               <MenuItem eventKey="1.1"><Button bsSize="small" bsStyle="link" onClick={this.logOut}>Logout</Button></MenuItem>
+               <MenuItem eventKey="1.2"><Button bsSize="small" style={{align:"right"}} bsStyle="link" onClick={() => this.getUser(true)}>Resync</Button></MenuItem>
+             </NavDropdown>
+           </div>
+          </div>
+          </Nav>
+          <PageHeader>
+            <Image style={{marginLeft:"10%"}} id="navbar-image" width="10%" src="/hnot.png" square/>
+          </PageHeader>
+          <Nav justified>
+          </Nav>
+          <Grid>
             <Row>
-              <Col xs={12} style={{marginTop:"20%"}}>
-                <Jumbotron id="user-jumbo" style={{height:"75%", width:"75%", margin: "0 auto", textAlign:"center"}}>
-                  <p>
-                    You have burned {this.state.getUserResult.calories_out} calories and eaten {this.state.getUserResult.calories_in} calories so far today.
-                  </p>
-                  <p>
-                    You need to burn {this.state.getUserResult.calories_left_to_go} more calories to reach your deficit of {this.state.getUserResult.calorie_deficit_goal} calories.
-                  </p>
-                  <p>
-                    That&#39;s {this.state.getUserResult.steps_left_to_go} more steps!
-                  </p>
+              <Col xs={12} md={8} style={{marginTop:"0%"}}>
+              <div id="user-jumbo" style={{ width:"65%", margin: "0 auto", textAlign:"center"}}>
+                <h1 style={ { color: "#3ACCCC", marginBottom: "5%" } } >Burn Goal</h1>
+                <CircularProgressbar
+                  initialAnimation={true}
+                  styles={{
+                    path: { stroke: "#3ACCCC", fill: "#3ACCCC", color: "#3ACCCC" }
+                  }}
+                  percentage={Math.trunc(this.state.getUserResult.calories_out/(this.state.getUserResult.calories_in+this.state.getUserResult.calorie_deficit_goal)*100)} />
+                <h2 style={ { color: "#3ACCCC" } } >of {(this.state.getUserResult.calories_in+this.state.getUserResult.calorie_deficit_goal)} calories</h2>
+              </div>
+              </Col>
+              <Col xs={12} md={4} style={{marginTop:"15%"}}>
+                <Jumbotron id="user-jumbo" style={{ height:"100%", width:"100%", margin: "0 auto", textAlign:"center"}}>
+                <div class="img"></div>
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12">
+                            <h2 style={ { color: "#3ACCCC", marginBottom: "5%" } } >That&#39;s</h2>
+                            <h1 style={ { color: "#3ACCCC", marginBottom: "5%" } } >{this.state.getUserResult.steps_left_to_go}</h1>
+                            <h2 style={ { color: "#3ACCCC", marginBottom: "5%" } } >more steps!</h2>
+                          </div>
+                      </div>
+                  </div>
                 </Jumbotron>
               </Col>
             </Row>
