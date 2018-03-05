@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PageHeader, Button, Nav, NavItem, Navbar, Image, Grid, Row, Col, Jumbotron, NavDropdown, MenuItem } from 'react-bootstrap';
 import CircularProgressbar from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
+import config from './config/config'
 
 class User extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class User extends Component {
   }
 
   getUser(resync) {
-    fetch("http://localhost:8000/users/"+this.props.match.params.user_id+"?resync="+resync, {
+    fetch(config.hioqiAPI+"/users/"+this.props.match.params.user_id+"?resync="+resync, {
            method: 'get',
            credentials: "include"
          })

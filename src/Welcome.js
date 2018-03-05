@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PageHeader, Jumbotron, Button, Grid, Row, Col, Navbar, Image } from 'react-bootstrap';
+import config from './config/config'
 
 class Welcome extends Component {
   render() {
@@ -17,7 +18,7 @@ class Welcome extends Component {
                   Achieve your fitness and weight loss goals
                 </p>
                 <p>
-                  <Button id="login-button" bsSize="large" href="http://localhost:8000/auth/fitbit">Login with Fitbit</Button>
+                  <Button id="login-button" bsSize="large" href={config.hioqiAPI+"/auth/fitbit"}>Login with Fitbit</Button>
                 </p>
                 <p>
                   <Button id="faq-link" bsSize="large" bsStyle="link" href="#">FAQ</Button>
