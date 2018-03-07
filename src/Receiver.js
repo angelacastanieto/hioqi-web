@@ -42,7 +42,7 @@ export default class Receiver extends Component {
         tokenUrl="https://api.fitbit.com/oauth2/token"
         clientId={process.env.REACT_APP_FITBIT_KEY}
         clientSecret={process.env.REACT_APP_FITBIT_SECRET}
-        redirectUri="http://localhost:3000/callback"s
+        redirectUri={config.webURL+"/callback"}
         onAuthSuccess={this.handleSuccess}
         onAuthError={this.handleError}
           render={({ processing, state, error }) => {

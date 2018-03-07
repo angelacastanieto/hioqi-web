@@ -1,1 +1,1 @@
-module.exports = { hioqiAPI: 'http://localhost:8000' }
+module.exports = { hioqiAPI: 'http://localhost:8000', webURL: 'http://localhost:3000' }

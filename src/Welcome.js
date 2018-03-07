@@ -22,7 +22,7 @@ class Welcome extends Component {
                 <OauthSender
                   authorizeUrl="https://www.fitbit.com/oauth2/authorize"
                   clientId={process.env.REACT_APP_FITBIT_KEY}
-                  redirectUri="http://localhost:3000/callback"
+                  redirectUri={config.webURL+"/callback"}
                   state={{a:'b'}}
                   render={({ url }) => <a href={url}>Login with Fitbit</a>}
                   args={ { scope: 'activity weight nutrition profile' } }
