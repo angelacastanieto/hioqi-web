@@ -6073,6 +6073,13 @@ react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
+"react-oauth-flow@https://github.com/angelacastanieto/react-oauth-flow/tarball/master":
+  version "0.0.0-semantically-released"
+  resolved "https://github.com/angelacastanieto/react-oauth-flow/tarball/master#d092902ce1f021c8f33e3ca0590135be0b1e7ca7"
+  dependencies:
+    base-64 "^0.1.0"
+    qs "^6.5.1"
+
 react-overlays@^0.8.0:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.8.3.tgz#fad65eea5b24301cca192a169f5dddb0b20d3ac5"
@@ -6597,13 +6604,6 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^2.0.0"
     inherits "^2.0.1"
-
-rof-fitbit@^0.0.0-semantically-released:
-  version "0.0.0-semantically-released"
-  resolved "https://registry.yarnpkg.com/rof-fitbit/-/rof-fitbit-0.0.0-semantically-released.tgz#23190ee0f1c3befb227fd4f4dadab2dbd0426580"
-  dependencies:
-    base-64 "^0.1.0"
-    qs "^6.5.1"
 
 run-async@^2.2.0:
   version "2.3.0"
