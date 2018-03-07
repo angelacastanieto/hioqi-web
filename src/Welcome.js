@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { PageHeader, Jumbotron, Button, Grid, Row, Col, Navbar, Image } from 'react-bootstrap';
 import config from './config/config'
+import { OauthSender } from 'react-oauth-flow';
 
 class Welcome extends Component {
   render() {
-    console.log("configs are", config)
     return (
       <div>
         <Grid style={{width:"100%", textAlign:"center", display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -19,7 +19,14 @@ class Welcome extends Component {
                   Achieve your fitness and weight loss goals
                 </p>
                 <p>
-                  <Button id="login-button" bsSize="large" href={config.hioqiAPI+"/auth/fitbit"}>Login with Fitbit</Button>
+                <OauthSender
+                  authorizeUrl="https://www.fitbit.com/oauth2/authorize"
+                  clientId={process.env.REACT_APP_FITBIT_KEY}
+                  redirectUri="http://localhost:3000/callback"
+                  state={{a:'b'}}
+                  render={({ url }) => <a href={url}>Login with Fitbit</a>}
+                  args={ { scope: 'activity weight nutrition profile' } }
+                />
                 </p>
                 <p>
                   <Button id="faq-link" bsSize="large" bsStyle="link" href="#">FAQ</Button>
